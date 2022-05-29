@@ -27,14 +27,15 @@ class Person(object):
 		return lib.Person_delete(self.obj)
 	def fib(self):
 		return lib.Person_fib(self.obj)
-#@njit
+@njit
 def fib_py(n):
 	if  n<=1:
 		return 1
 	else:
 		return fib_py(n-1) + fib_py(n-2)
+"""
 cpp_time =[]
-numba_time = []
+py_time = []
 
 for n in range(30,45):
 	print(n)
@@ -46,12 +47,16 @@ for n in range(30,45):
 	start = pc()
 	fib_py(n)
 	end = pc()
-	numba_time.append(end-start)
+	py_time.append(end-start)
 
 
-plt.plot(range(30,45), numba_time)
+plt.plot(range(30,45), py_time)
 plt.plot(range(30,45), cpp_time)
 plt.savefig('firsttestplot.png')
 print(cpp_time)
-print(numba_time)
+print(py_time)
+"""
+print(fib_py(47))
+f = Person(47)
+print(f.fib())
 
